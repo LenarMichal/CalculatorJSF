@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+	<style>
+* {
+	margin: 2pt;
+	padding: 2pt;
+}
+
+.commandButton {
+	width: 50px;
+	height: 50px;
+	font-size: 15pt;
+	cursor: pointer;
+}
+
+
+
+
+.inputText {
+	width: 170pt;
+	height: 30pt;
+	margin: 9pt;
+	padding: 2pt;
+	font-size: 17pt;
+}
+
+.main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	background: red;
+	border: 2;
+}
+</style>
+
+
+	<title>KALKULATOR JSF</title>
+</h:head>
+<h:body>
+
+	<h:form>
+
+
+		<div class="main">
+
+
+			<table>
+				<tr>
+
+					<td><h:inputText class="inputText" style="text-align: right"
+							value="#{calculator.display}" /> <h:commandButton
+							class="commandButton" value="C" action="#{calculator.clear()}" /></td>
+
+				</tr>
+			</table>
+			<table>
+
+				<tr>
+					<td><h:commandButton class="commandButton" value="7"
+							action="#{calculator.addDigit('7')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="8"
+							action="#{calculator.addDigit('8')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="9"
+							action="#{calculator.addDigit('9')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="/"
+							action="#{calculator.addOperation('/')}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton"
+							value="sqrt" action="#{calculator.sqrt()}">
+							<f:ajax execute="@form"  render="@form" />
+						</h:commandButton></td>
+				</tr>
+				<tr>
+					<td><h:commandButton class="commandButton" value="4"
+							action="#{calculator.addDigit('4')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="5"
+							action="#{calculator.addDigit('5')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="6"
+							action="#{calculator.addDigit('6')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="x"
+							action="#{calculator.addOperation('*')}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="%"
+							action="#{calculator.addOperation('%')}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton></td>
+				</tr>
+				<tr>
+					<td><h:commandButton class="commandButton" value="1"
+							action="#{calculator.addDigit('1')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="2"
+							action="#{calculator.addDigit('2')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="3"
+							action="#{calculator.addDigit('3')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="-"
+							action="#{calculator.addOperation('-')}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton></td>
+					<td rowspan="2"><h:commandButton class="commandButton"
+							style="height: 85pt" value="=" update=":formId"
+							 action="#{calculator.calculate()}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton></td>
+				</tr>
+				<tr>
+					<td><h:commandButton class="commandButton" value="0"
+							action="#{calculator.addDigit('0')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="."
+							action="#{calculator.addDigit('.')}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="+/-"
+							action="#{calculator.plusMinusOperation()}">
+							<f:ajax render="@form" />
+						</h:commandButton></td>
+					<td><h:commandButton class="commandButton" value="+"
+							action="#{calculator.addOperation('+')}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton></td>
+
+				</tr>
+
+				<tr>
+					<td colspan="4"><h:link value = "Zmien ustawienia" outcome = "index" /></td>
+				</tr>
+			</table>
+		</div>
+	</h:form>
+</h:body>
+</html>
